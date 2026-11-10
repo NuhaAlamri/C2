@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 @main
 struct LearningJourneyApp: App {
@@ -6,5 +7,6 @@ struct LearningJourneyApp: App {
         WindowGroup {
             RootView()
         }
+        .modelContainer(for: [Goal.self, DayLog.self])
     }
 }
