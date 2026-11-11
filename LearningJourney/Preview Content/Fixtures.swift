@@ -85,3 +85,16 @@ extension Fixtures.State {
         return goal
     }
 }
+
+extension Fixtures.State {
+    /// التسجيلات كـ LogEntry للمحرك والاختبارات
+    var entries: [LogEntry] {
+        learned.map { entry(day: $0, kind: .learned) }
+            + freezed.map { entry(day: $0, kind: .freezed) }
+    }
+
+    private func entry(day: Int, kind: DayLog.Kind) -> LogEntry {
+        let moment = Fixtures.october(day)
+        return LogEntry(day: Fixtures.calendar.startOfDay(for: moment), loggedAt: moment, kind: kind)
+    }
+}
